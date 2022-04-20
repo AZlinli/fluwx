@@ -27,18 +27,18 @@ FlutterMethodChannel *channel = nil;
 #if TARGET_OS_IPHONE
         if (channel == nil) {
 #endif
-        channel = [FlutterMethodChannel
-                methodChannelWithName:@"com.jarvanmo/fluwx"
-                      binaryMessenger:[registrar messenger]];
-        FluwxPlugin *instance = [[FluwxPlugin alloc] initWithRegistrar:registrar methodChannel:channel];
-        [registrar addMethodCallDelegate:instance channel:channel];
-        [[FluwxResponseHandler defaultManager] setMethodChannel:channel];
-        
-        [registrar addApplicationDelegate:instance];
+ 
 #if TARGET_OS_IPHONE
         }
 #endif
-
+    channel = [FlutterMethodChannel
+            methodChannelWithName:@"com.jarvanmo/fluwx"
+                  binaryMessenger:[registrar messenger]];
+    FluwxPlugin *instance = [[FluwxPlugin alloc] initWithRegistrar:registrar methodChannel:channel];
+    [registrar addMethodCallDelegate:instance channel:channel];
+    [[FluwxResponseHandler defaultManager] setMethodChannel:channel];
+    
+    [registrar addApplicationDelegate:instance];
 }
 
 - (instancetype)initWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar methodChannel:(FlutterMethodChannel *)flutterMethodChannel {
