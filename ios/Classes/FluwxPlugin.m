@@ -23,14 +23,6 @@ BOOL handleOpenURLByFluwx = YES;
 FlutterMethodChannel *channel = nil;
 
 + (void)registerWithRegistrar:(NSObject <FlutterPluginRegistrar> *)registrar {
-    
-#if TARGET_OS_IPHONE
-        if (channel == nil) {
-#endif
- 
-#if TARGET_OS_IPHONE
-        }
-#endif
     channel = [FlutterMethodChannel
             methodChannelWithName:@"com.jarvanmo/fluwx"
                   binaryMessenger:[registrar messenger]];
